@@ -1,0 +1,466 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'GT BlueTooth Example'
+  ClientHeight = 780
+  ClientWidth = 460
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object layPermissions: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 2.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btnPermissions: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '1. Permissions'
+      OnClick = btnPermissions_OnClick
+    end
+    object btnListPaired: TButton
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 290.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '2. List paired devices'
+      OnClick = btnListPaired_OnClick
+    end
+  end
+  object layDevices: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 44.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object cmbDevices: TComboBox
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 444.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+    end
+  end
+  object layConnect: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 86.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object btnListen: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '3a. Listen'
+      OnClick = btnListen_OnClick
+    end
+    object btnConnect: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 129.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '3b. Connect'
+      OnClick = btnConnect_OnClick
+    end
+    object btnDisconnect: TButton
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 186.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Disconnect'
+      OnClick = btnDisconnect_OnClick
+    end
+  end
+  object layOptions: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object chkSecure: TCheckBox
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Secure socket'
+    end
+    object chkLogReads: TCheckBox
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 290.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Log every read'
+    end
+  end
+  object layText: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 170.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object btnSendText: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '4. Send text'
+      OnClick = btnSendText_OnClick
+    end
+    object edtText: TEdit
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 315.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Hello over Bluetooth'
+    end
+  end
+  object layPing: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 212.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object btnPing: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '5. Ping, bytes:'
+      OnClick = btnPing_OnClick
+    end
+    object edtPingSize: TEdit
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 315.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      KeyboardType = NumberPad
+      Text = '1024'
+    end
+  end
+  object layKnobs: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 254.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    object lblChunkSize: TLabel
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Chunk size'
+    end
+    object edtChunkSize: TEdit
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 84.000000000000000000
+      Size.Width = 90.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      KeyboardType = NumberPad
+      Text = '16384'
+    end
+    object lblAckWindow: TLabel
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 178.000000000000000000
+      Size.Width = 85.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Ack window'
+    end
+    object edtAckWindow: TEdit
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 177.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      KeyboardType = NumberPad
+      Text = '1'
+    end
+  end
+  object layTestFile: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 296.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    object btnMakeTestFile: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Make test file, KB:'
+      OnClick = btnMakeTestFile_OnClick
+    end
+    object edtTestFileKB: TEdit
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 290.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      KeyboardType = NumberPad
+      Text = '256'
+    end
+  end
+  object layFilePath: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 338.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    object btnBrowse: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Browse'
+      OnClick = btnBrowse_OnClick
+    end
+    object edtFilePath: TEdit
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+  end
+  object laySend: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 380.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    object btnSendFile: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '6. Send file'
+      OnClick = btnSendFile_OnClick
+    end
+    object btnCancel: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 129.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Cancel'
+      OnClick = btnCancel_OnClick
+    end
+    object btnStatistics: TButton
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 211.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Read statistics'
+      OnClick = btnStatistics_OnClick
+    end
+  end
+  object layProgress: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 422.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    object prgTransfer: TProgressBar
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 444.000000000000000000
+      Size.Height = 18.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Orientation = Horizontal
+    end
+  end
+  object layStatus: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 444.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    object lblStatus: TLabel
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 444.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Link: Idle'
+    end
+  end
+  object layLogButtons: TLayout
+    Align = Top
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 472.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    object btnSaveLog: TButton
+      Align = Left
+      Margins.Right = 4.000000000000000000
+      Position.X = 0.000000000000000000
+      Size.Width = 125.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Save log'
+      OnClick = btnSaveLog_OnClick
+    end
+    object btnClearLog: TButton
+      Align = Client
+      Margins.Right = 4.000000000000000000
+      Size.Width = 315.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Clear log'
+      OnClick = btnClearLog_OnClick
+    end
+  end
+  object memLog: TMemo
+    Align = Client
+    Margins.Left = 6.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 6.000000000000000000
+    Margins.Bottom = 6.000000000000000000
+    Position.X = 6.000000000000000000
+    Position.Y = 514.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 260.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    ReadOnly = True
+  end
+end
