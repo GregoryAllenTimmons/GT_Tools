@@ -12,27 +12,28 @@ Set of Delphi components and libraries by Greg Timmons. FMX, Windows and Android
 
 Transfers files between two paired devices (phone to phone, or Windows to phone) over Classic Bluetooth, with no server, no network and no third-party code. Only `System.Bluetooth` and `System.Hash` from the RTL.
 
-Tested on a Pixel 6 (Android 12) and a Pixel 9 (Android 17 Build CP3A.261005.005), both directions, and from Windows 11 in a VMware® Workstation 17 Pro (version 17.6.3 build-24583834) guest to a phone.
+Tested on a Pixel 6 (Android 12) (using Android 32-bit) and a Pixel 9 (Android 17 Build CP3A.261005.005) (using Android 64-bit), both directions, and from Windows 11 in a VMware® Workstation 17 Pro (version 17.6.3 build-24583834) guest to a phone.
 
 ### Layout
 
 ```
 BlueTooth/
-  Source/   GT_BlueToothProtocol.pas   wire format (frames, CRC32) - no Bluetooth in it
-            GT_BlueToothLink.pas       one open RFCOMM connection + its read thread
-            GT_BlueToothSession.pas    text, ping and file transfer over a link
-            GT_BlueTooth.pas           the TGT_BlueTooth component wrapping the above
-            GT_BlueToothReg.pas        palette registration ("GT Tools" tab)
-  Example/  ExampleMainForm.pas/.fmx   step-by-step test app
+  GT_BlueToothProtocol.pas   wire format (frames, CRC32) - no Bluetooth in it
+  GT_BlueToothLink.pas       one open RFCOMM connection + its read thread
+  GT_BlueToothSession.pas    text, ping and file transfer over a link
+  GT_BlueTooth.pas           the TGT_BlueTooth component wrapping the above
+  GT_BlueToothReg.pas        palette registration ("GT Tools" tab)
+  Example/                   ExampleMainForm.pas/.fmx - step-by-step test app
 ```
 
-The three library units can be used on their own without the component.
+No package file is included; make your own (below). The three library units can also be used on their own without the component.
 
 ### Installing the component
 
-1. File > New > Package. Add the five units from `Source/`. Build for Win32.
-2. Right-click the package in the Project Manager > Install. `TGT_BlueTooth` appears on the **GT Tools** tab.
-3. For Android targets, add `BlueTooth\Source` to the project's search path (Project > Options > Building > Delphi Compiler > Search path, with Android selected).
+1. File > New > Package. Save it wherever you keep component packages.
+2. Add the five units from `BlueTooth/` to it (`GT_BlueToothReg.pas` is the only one that is design-time only). Add `rtl` and `fmx` to Requires if the IDE does not.
+3. Build for Win32, then right-click the package in the Project Manager > Install. `TGT_BlueTooth` appears on the **GT Tools** tab.
+4. In any project that uses it, add the `BlueTooth` folder to the search path (Project > Options > Building > Delphi Compiler > Search path) for each target platform, so the Android and Win64 builds find the units.
 
 ### Using it
 
@@ -75,7 +76,7 @@ Received files land in `ReceiveFolder` (default: `Download\GTBTReceived` on Andr
 
 `Example/` is the test bench used to develop the component: numbered buttons for permissions, paired devices, listen/connect, text, ping, and file transfer, with every event written to a timestamped log you can save. Build it for both devices, tap Listen on one and Connect on the other, then work down the buttons.
 
-To set it up: new Multi-Device Application, replace the default form with `ExampleMainForm`, add `BlueTooth\Source` to the search path, drop a `TGT_BlueTooth` on the form (it will be named `GT_BlueTooth1`), and wire its six events to the `GT_BlueTooth1_On...` handlers already in the unit. Tick the Bluetooth, Bluetooth admin, Bluetooth connect, Bluetooth scan and Access fine location permissions for Android.
+To set it up: new Multi-Device Application, replace the default form with `ExampleMainForm`, add the `BlueTooth` folder to the search path, drop a `TGT_BlueTooth` on the form (it will be named `GT_BlueTooth1`), and wire its six events to the `GT_BlueTooth1_On...` handlers already in the unit. Tick the Bluetooth, Bluetooth admin, Bluetooth connect, Bluetooth scan and Access fine location permissions for Android.
 
 ### Things to know
 
